@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+       <section>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Téléphone</th>
+                            <th scope="col">Adresse</th>
+                            <th scope="col">Ville</th>
+                            <th scope="col">Code postal</th>
+                            <th scope="col">Pays</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for person in allPerson %}
+                        <tr>
+                            <th scope="row">
+                                {{ person.id}}
+                            </th>
+                            <td>
+                                {{ person.Lastname }}
+                            </td>
+                            <td>
+                                {{ person.Firstname }}
+                            </td>
+                            <td>
+                                {{ person.Phone}}
+                            </td>
+                            <td>
+                                {{ person.StreetAddress }}
+                            </td>
+                            <td>
+                                {{ person.City }}
+                            </td>
+                            <td>
+                                {{ person.Zipcode }}
+                            </td>
+                            <td>
+                                {{ person.Country }}
+                            </td>
+
+                            <td>
+                                <a href="{{path("update_person", {"id": person.id} )}}">
+                                    <button class="btn btn-info" type="submit" value="edit">Modifier</button>
+                                </a>
+                                <a href="{{path("delete_person", {"id": person.id} )}}">
+                                    <button class="btn btn-danger" type="submit" value="delete">Supprimer</button>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+{% endblock %}
